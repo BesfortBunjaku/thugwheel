@@ -1,5 +1,5 @@
 
-# build python wheels for windows
+# build python wheels for windows linux and macos, and get vession from git tag
 
 name: Build wheels
 
@@ -7,17 +7,26 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3]
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
-        python-version: 3
-    - name: Install dependencies
+        python-version: ${{ matrix.python-version }}
+    - name: List installed Python versions and os
       run: |
-        echo "Building wheels for ${{ matrix.python-version }} on ${{ matrix.os }}"
-        echo "Tag name: ${{ github.tag_name }}"     
+        echo "Python versions:" ${{ steps.python-versions.outputs.python-versions }}
+        echo "OS:" ${{ matrix.os }}
+
+
+ 
+
+     
 
 # jobs:
 #   build:

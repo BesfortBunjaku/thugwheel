@@ -20,8 +20,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: List installed Python versions and os
       run: |
-        echo "Python versions:" ${{ steps.python-versions.outputs.python-versions }}
+        echo "Python versions:" ${{ matrix.python-version}}
         echo "OS:" ${{ matrix.os }}
+        echo "Tag name:" ${{ github.ref }}
 
 
  

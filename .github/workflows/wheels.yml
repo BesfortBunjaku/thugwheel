@@ -25,28 +25,24 @@ jobs:
       with:
         name: wheels
         path: dist/*.whl
-    - name: List files
-      run: |
-        dir dist
+
   
   upload:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/download-artifact@v3
       with:
         name: wheels
         path: dist
-    - name: List files
-      run: |
-        ls dist
+
     - name: add to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: dist/*.whl
-        upload_url: ${{ github.event.release.upload_url }}
-         
+        tag: ${{ github.ref }}
+        asset_name : ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}-${{ matrix.python-version }}-${{ matrix.os }}.whl
         overwrite: true
         file_glob: true
 

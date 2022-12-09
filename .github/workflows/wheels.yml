@@ -25,6 +25,7 @@ jobs:
       with:
         name: wheels
         path: dist/*.whl
-      
+    - name: List files
       run: |
-        ls
+        dir dist
+        

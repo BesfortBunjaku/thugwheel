@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3
+    - name: Install dependencies
       run: |
         echo "Building wheels for ${{ matrix.python-version }} on ${{ matrix.os }}"
         echo "Tag name: ${{ github.tag_name }}"     

@@ -6,7 +6,8 @@ name: Build wheels
 on: 
   push:
     tags:
-      - '*' # Push events to matching v*.*.* tags
+      - 'v*'
+      - '*'
 
 jobs:
   build:

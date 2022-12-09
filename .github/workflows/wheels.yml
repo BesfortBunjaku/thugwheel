@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "Python versions:" ${{ matrix.python-version}}
         echo "OS:" ${{ matrix.os }}
-        echo "Tag name:" ${{ github.tag_name }}
+        echo "Tag name:" ${{ github.ref_name }}
 
 
  

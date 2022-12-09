@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         python-version: [3]
     steps:
     - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "Python versions:" ${{ matrix.python-version}}
         echo "OS:" ${{ matrix.os }}
-        echo "Tag name:" ${{ github.ref }}
+        echo "Tag name:" ${{ github.tag_name }}
 
 
  
